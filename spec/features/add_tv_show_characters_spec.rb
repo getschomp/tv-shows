@@ -32,8 +32,8 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     character = Character.new(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
-    fill_in 'Character Name', with: character.name
-    fill_in 'Actor Name', with: actor.name
+    fill_in 'Character Name', with: character.character_name
+    fill_in 'Actor Name', with: charactor.actor_name
     click_on 'Submit'
     expect(page).to have_content 'Success'
     expect(page).to_not have_content "has already been taken"
@@ -51,8 +51,8 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     character = Character.create(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
-    fill_in 'Character Name', with: character.name
-    fill_in 'Actor Name', with: actor.name
+    fill_in 'Character Name', with: character.character_name
+    fill_in 'Actor Name', with: charactor.actor_name
     click_on 'Submit'
     expect(page).to have_content 'Success'
     expect(page).to_not have_content "has already been taken"
@@ -84,8 +84,8 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     character = Character.create(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
-    fill_in 'Character Name', with: character.name
-    fill_in 'Actor Name', with: actor.name
+    fill_in 'Character Name', with: character.character_name
+    fill_in 'Actor Name', with: charactor.actor_name
     click_on 'Submit'
     expect(page).to_not have_content 'Success'
     expect(page).to have_content "has already been taken"
