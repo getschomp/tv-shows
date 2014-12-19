@@ -12,11 +12,11 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @tv_show = TelevisionShow.find(params[:television_show_id])
+    @television_show = TelevisionShow.find(params[:television_show_id])
     @character = Character.new(character_params)
-    @character.television_show_id = @tv_show.id
+    @character.television_show_id = @television_show.id
     if @character.save
-      redirect_to @character, notice: "Answer sucessfully created."
+      redirect_to @television_show, notice: "character sucessfully created."
     else
       render :new
     end
