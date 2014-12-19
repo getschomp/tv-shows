@@ -9,7 +9,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
    # * I can optionally provide a description
    # * If I do not provide the required information, I receive an error message
    #   * If the character already exists in the database, I receive an error message
-  scenario 'user gets to add character page from television_shows/1' do
+  scenario 'user gets to add character page from television_shows show page' do
     show = TelevisionShow.create(title: 'Game of Thrones', network: 'HBO', years: '2011-', synopsis: 'Seven noble families fight for control of the mythical land of Westeros.')
 
     visit television_show_path(:id => show.id)
@@ -85,7 +85,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'character_character_name', with: character.character_name
-    fill_in 'charactor_actor_name', with: charactor.actor_name
+    fill_in 'character_actor_name', with: character.actor_name
     click_on 'Submit'
     expect(page).to_not have_content 'Success'
     expect(page).to have_content "has already been taken"
