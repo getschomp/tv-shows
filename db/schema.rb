@@ -17,17 +17,23 @@ ActiveRecord::Schema.define(version: 20141218223849) do
   enable_extension "plpgsql"
 
   create_table "characters", force: true do |t|
-    t.string  "character_name",     null: false
-    t.string  "actor_name",         null: false
-    t.string  "description"
-    t.integer "television_show_id", null: false
+    t.string   "character_name",     null: false
+    t.string   "actor_name",         null: false
+    t.string   "description"
+    t.integer  "television_show_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
+  add_index "characters", ["character_name", "actor_name"], name: "index_characters_on_character_name_and_actor_name", unique: true, using: :btree
+
   create_table "television_shows", force: true do |t|
-    t.string "title",    null: false
-    t.string "network"
-    t.string "years"
-    t.string "synopsis"
+    t.string   "title",      null: false
+    t.string   "network"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "years"
+    t.string   "synopsis"
   end
 
   add_index "television_shows", ["title", "network"], name: "index_television_shows_on_title_and_network", unique: true, using: :btree

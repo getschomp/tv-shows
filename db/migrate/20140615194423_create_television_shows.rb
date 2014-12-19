@@ -3,6 +3,8 @@ class CreateTelevisionShows < ActiveRecord::Migration
     create_table :television_shows do |t|
       t.string :title, null: false
       t.string :network
+
+      t.timestamps
     end
 
     add_index :television_shows, [:title, :network], unique: true

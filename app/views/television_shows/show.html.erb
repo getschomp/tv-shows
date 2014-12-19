@@ -9,4 +9,4 @@
   <%= @television_show.synopsis %>
 </div>
 
-<a href = "/television_shows/<%= @television_show.id %>/characters/new" > Add a Character </a>
+<% link_to "Add a Character", new_television_show_character_path	%>

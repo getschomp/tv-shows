@@ -3,6 +3,7 @@ class CharactersController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -11,7 +12,14 @@ class CharactersController < ApplicationController
   end
 
   def create
-
+    @tv_show = TelevisionShow.find(params[:television_show_id])
+    @character = Character.new(character_params)
+    @character.television_show_id = @tv_show.id
+    if @character.save
+      redirect_to @character, notice: "Answer sucessfully created."
+    else
+      render :new
+    end
   end
 
   private
