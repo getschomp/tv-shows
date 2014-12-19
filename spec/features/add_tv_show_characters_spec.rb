@@ -12,7 +12,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
   scenario 'user gets to add character page from television_shows/1' do
     show = TelevisionShow.create(title: 'Game of Thrones', network: 'HBO', years: '2011-', synopsis: 'Seven noble families fight for control of the mythical land of Westeros.')
 
-    visit "/television_shows/#{show.id}"
+    visit television_show_path(:id => show.id)
     click_link "Add a Character"
     expect(page).to have_content "Add a Character"
   end
@@ -30,7 +30,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     }
 
     character = Character.new(attrs)
-    visit "/television_shows/"
+    visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'Character Name', with: character.name
     fill_in 'Actor Name', with: actor.name
@@ -49,7 +49,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     }
 
     character = Character.create(attrs)
-    visit "/television_shows/#{show.id}"
+    visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'Character Name', with: character.name
     fill_in 'Actor Name', with: actor.name
@@ -63,8 +63,8 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
   scenario 'without required attributes' do
     show = TelevisionShow.create(title: 'Game of Thrones', network: 'HBO', years: '2011-', synopsis: 'Seven noble families fight for control of the mythical land of Westeros.')
 
-    visit "/television_shows/#{show.id}"
-    click_link "Add a Character"
+    visit television_show_path(:id => show.id)
+    click_l "Add a Character"
     click_on 'Submit'
     expect(page).to_not have_content 'Success'
     expect(page).to have_content "can't be blank"
@@ -82,7 +82,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     }
 
     character = Character.create(attrs)
-    visit "/television_shows/#{show.id}"
+    visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'Character Name', with: character.name
     fill_in 'Actor Name', with: actor.name
