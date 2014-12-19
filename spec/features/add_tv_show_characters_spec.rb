@@ -64,7 +64,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
     show = TelevisionShow.create(title: 'Game of Thrones', network: 'HBO', years: '2011-', synopsis: 'Seven noble families fight for control of the mythical land of Westeros.')
 
     visit television_show_path(:id => show.id)
-    click_l "Add a Character"
+    click_link "Add a Character"
     click_on 'Submit'
     expect(page).to_not have_content 'Success'
     expect(page).to have_content "can't be blank"

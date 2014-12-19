@@ -9,4 +9,4 @@
   <%= @television_show.synopsis %>
 </div>
 
-<% link_to "Add a Character", new_television_show_character_path	%>
+<%= link_to "Add a Character", new_television_show_character_path(:television_show_id => @television_show.id)	%>
