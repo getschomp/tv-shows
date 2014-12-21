@@ -29,7 +29,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
       television_show_id: show.id
     }
 
-    character = Character.create(attrs)
+    character = Character.new(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'character_character_name', with: character.character_name
@@ -48,11 +48,12 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
       television_show_id: show.id
     }
 
-    character = Character.create(attrs)
+    character = Character.new(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
+    save_and_open_page
     fill_in 'character_character_name', with: character.character_name
-    fill_in 'character_actor_name', with: charactor.actor_name
+    fill_in 'character_actor_name', with: character.actor_name
     click_on 'Submit'
     expect(page).to have_content 'Success'
     expect(page).to_not have_content "has already been taken"
@@ -65,6 +66,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
 
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
+    save_and_open_page
     click_on 'Submit'
     expect(page).to_not have_content 'Success'
     expect(page).to have_content "can't be blank"
@@ -81,7 +83,7 @@ feature 'user adds characters to a tv show', %Q{"As a site visitor
       television_show_id: show.id
     }
 
-    character = Character.create(attrs)
+    character = Character.new(attrs)
     visit television_show_path(:id => show.id)
     click_link "Add a Character"
     fill_in 'character_character_name', with: character.character_name

@@ -1,6 +1,8 @@
 <h3>Add a Character</h3>
 
-<%= form_for :character do |f| %>
+
+
+<%= form_for :character, :html => { :method => :post }  do |f| %>
 <% if @character.errors.any? %>
 <ul>
   <% @character.errors.full_messages.each do |msg| %>
